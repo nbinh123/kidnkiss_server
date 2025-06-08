@@ -4,8 +4,8 @@ const app = express()
 const path = require("path")
 const methodOverride = require("method-override")
 const cors = require('cors');
-const db = require("../sv/express/connectDB/db")
-const route = require("../sv/express/routes/routes")
+const db = require("./express/connectDB/db")
+const route = require("./express/routes/routes")
 
 app.use(express.static(path.join(__dirname, "public")))
 app.use(methodOverride("_method"))
@@ -31,7 +31,6 @@ app.set("views", path.join(__dirname, /* đường dẫn đến file views */ "r
 
 
 db.connect()
-app.use(express.static(path.join(__dirname, "public")))
 app.set('view engine', 'hbs'); // đuôi tệp mẫu mặc định là '.hbs'
 
 app.use(methodOverride("_method"))
