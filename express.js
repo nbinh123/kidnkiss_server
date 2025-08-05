@@ -31,6 +31,7 @@ app.set("views", path.join(__dirname, /* đường dẫn đến file views */ "r
 
 
 db.connect()
+
 app.set('view engine', 'hbs'); // đuôi tệp mẫu mặc định là '.hbs'
 
 app.use(methodOverride("_method"))

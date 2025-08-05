@@ -1,7 +1,6 @@
 const express = require("express") // dùng thư viện express
 const app = express()
 const User = require("../modals/UserModal")
-const { multipleMongooseToObject, singleMongooseToOject } = require("../ulti/convertMongoose")
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
@@ -19,7 +18,7 @@ class ProductController {
         });
 
         // Kiểm tra mật khẩu (so sánh mật khẩu nhập vào với mật khẩu mã hóa trong DB)
-        const isMatch = bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ 
             message: 'Invalid credentials',
             status: 400 
@@ -39,6 +38,8 @@ class ProductController {
     sign_in = async (req, res, next) => {
 
         const { username, password } = req.body;
+        console.log(req.body);
+        
 
         // Kiểm tra xem người dùng đã tồn tại hay chưa
         const existingUser = await User.findOne({ username });
@@ -107,7 +108,6 @@ class ProductController {
             res.status(500).json({ message: 'Server error' });
         }
     };
-    
 }
 
 module.exports = new ProductController;
