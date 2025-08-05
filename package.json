@@ -13,7 +13,7 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "exp": "nodemon express.js",
+    "start": "nodemon express.js",
     "db": "json-server --watch .//api/data.json --port 8888",
     "dev": "concurrently \"npm run db \" \"npm run exp \""
   }
