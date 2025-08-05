@@ -38,7 +38,6 @@ class ProductController {
     sign_in = async (req, res, next) => {
 
         const { username, password } = req.body;
-        console.log(req.body);
         
 
         // Kiểm tra xem người dùng đã tồn tại hay chưa
