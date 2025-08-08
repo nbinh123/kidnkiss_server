@@ -48,10 +48,9 @@ app.get("/haha", (req, res) => {
     })
 })
 
-
-app.listen(port, () => console.log(`ok`))
-
-
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
+});
 //////////////////////////////////////
 
 
